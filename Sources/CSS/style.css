@@ -1,0 +1,61 @@
+// Scaffolding
+@body-bg: #fff;
+@text-color: @black-50;
+
+// Variables
+@brand-primary: #D0C4AB;
+@link-color: @brand-primary;
+@link-hover-color: darken(@link-color, 15%);
+
+body {
+	background-image: url('res/images/Data-Center.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+a {
+	color: @link-color;
+	text-decoration: none;
+
+	&:hover {
+		color: @link-hover-color;
+		text-decoration: underline;
+	}
+}
+.main-content{
+	background-color: #000114;
+	padding-top: 25px;
+	padding-right: 0;
+	padding-left: 0;
+	margin-top:150px;
+	color: #D0C4AB;
+	font-family: 'Raleway', sans-serif;
+}
+.header {
+	font-family: 'Raleway', sans-serif;
+	background-color: white;
+}
+.app-heading {
+	margin-left: 10px;
+}
+.app-thumbnails {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+h1 {
+	font-weight: 800;
+}
+h2 {
+	font-weight: 600;
+}
+h3 {
+	font-weight: 200;
+	margin-top: 10px;
+}
+hr {
+	height: 5px;
+	color: #D0C4AB;
+}
+img {
+	max-width:100%;
+	height: auto;
+}

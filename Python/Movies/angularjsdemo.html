@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" ng-app="demo.app" ng-strict-di ng-controller="DemoCtrl">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Demo</title>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="page-header"><h1>Form Demo</h1></div>
+    <div class="row">
+      <form name="form" class="col-sm-8" ng-submit="onSubmit(form)" bs-form>
+
+        <!-- Simple email/text input  -->
+        <div class="form-group">
+          <input type="email" required
+            ng-model="movie.email"
+            placeholder="Please enter your email address" />
+        </div>
+
+        <!-- Two columns  -->
+        <div class="row">
+          <div class="form-group col-sm-8" label="Movie title">
+            <input type="text" required ng-model="movie.title" ng-minlength="2" ng-maxlength="50"
+              placeholder="Please enter the movie title" />
+          </div>
+
+          <div class="form-group col-sm-4">
+            <select required ng-model="movie.genre" ng-options="genre.name as genre.label for genre in genres">
+              <option value="">-- Please select --</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Three columns & numeric input with prefix-icon -->
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <input type="text" ng-model="movie.director" />
+          </div>
+
+          <div class="form-group col-sm-4">
+            <input type="text" ng-model="movie.writer" />
+          </div>
+
+          <div class="form-group col-sm-4">
+            <input type="number" ng-model="movie.budget" required min="1" max="200000000"
+              prefix-icon="fa fa-dollar" />
+          </div>
+        </div>
+
+        <!-- URLs -->
+        <div class="form-group" label="Website">
+          <input type="url" ng-model="movie.url" required />
+        </div>
+
+        <div class="form-group">
+          <input type="url" ng-model="movie.trailer" />
+        </div>
+
+        <!-- Range -->
+        <div class="form-group" nolabel>
+          <label>Rating (<span ng-bind="movie.rating"></span>)</label>
+          <input type="range" ng-model="movie.rating" required min="0" max="5" step="0.1" nocontrol>
+        </div>
+
+        <!-- Textarea -->
+        <div class="form-group">
+          <textarea ng-model="movie.review" rows="8" required></textarea>
+        </div>
+
+        <!-- Custom form-group -->
+        <div class="form-group" nolabel>
+          <div>
+            <label class="radio-inline">
+              <input type="radio" name="rating" ng-model="movie.rating" value="terrible" required /> Terrible
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="rating" ng-model="movie.rating" value="watchable" required /> Watchable
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="rating" ng-model="movie.rating" value="best" required /> Five Stars!
+            </label>
+          </div>
+        </div>
+
+        <!-- Submit or cancel -->
+        <bs:submit></bs:submit>
+
+      </form>
+
+      <div class="col-sm-4"><pre>{{movie | json}}</pre></div>
+    </div>
+  </div>
+  <script src="./node_modules/angular/angular.js"></script>
+  <script src="./dist/ui-bsm-input-errors.js"></script>
+  <script src="./dist/ui-bsm-form-builder.js"></script>
+  <script>
+    angular.module('demo.app', [
+      'ui.bootstrap.more.input-errors',
+      'ui.bootstrap.more.form-builder',
+    ])
+      .controller('DemoCtrl', ["$scope", function($scope) {
+        $scope.movie = {rating: 2.5};
+        $scope.genres = [
+          {name: "action", label: "Action" },
+          {name: "comedy", label: "Comedy" },
+          {name: "horror", label: "Horror" },
+          {name: "romance", label: "Romance" }
+        ];
+        $scope.onSubmit = function(form) {
+          if (form.$invalid) return;
+          alert("Saving ...");
+        };
+      }]);
+  </script>
+</body>
+</html>
