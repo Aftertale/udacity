@@ -1,7 +1,7 @@
 import webbrowser
 import re
-import urllib2
-import simplejson
+import urllib.request
+import json
         
 class Movie():
     """This Class provides a way to store movie related information"""
@@ -19,12 +19,12 @@ class Movie():
         webbrowser.open(self.trailer_youtube_url)
 
     def get_movie_info(self):
-        url = "http://www.omdbapi.com/?t=" + self.title.replace(" ", "+") + "&y=&plot=full&r=json&tomatoes=true"
-        req = urllib2.Request(url)
-        opener = urllib2.build_opener()
-        f = opener.open(req)
-        json = simplejson.load(f)
-        return(json)
+        url = "http://www.omdbapi.com/?t=" + self.title.replace(" ", "+") + "&y=&plot=full&r=json"
+        req = urllib.request.urlopen(url)
+        response = req.read()
+        decode = response.decode(encoding='utf-8')
+        movieInfo = json.loads(decode)
+        return(movieInfo)
     
     #def get_you_tube_link(self):
     #    youtubeurl = "https://gdata.youtube.com/feeds/api/videos"

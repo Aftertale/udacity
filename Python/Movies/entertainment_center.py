@@ -25,15 +25,20 @@ snakes_on_a_plane = media.Movie("Snakes on a Plane",
 django_unchained = media.Movie("Django Unchained",
                                "www.youtube.com/watch?v=eUdM9vrCbow")
 
+princess_bride = media.Movie("The Princess Bride",
+                             "www.youtube.com/watch?v=njZBYfNpWoE")
+
+
 unsorted_movies = [toy_story, avatar, school_of_rock, pulp_fiction, ratatouille, midnight_in_paris, snakes_on_a_plane, django_unchained]
 for movie in unsorted_movies:
-    print movie.title
+    print(movie.title)
     info = movie.get_movie_info()
     movie.poster_image_url = info.get("Poster")
     movie.storyline = info.get("Plot").encode("utf-8").strip()
     movie.genre = info.get("Genre")
     movie.cast = info.get("Actors")
     movie.year = info.get("Year")
+    movie.director = info["Director"]
 movies = sorted(unsorted_movies, key=lambda movie: movie.title)
 
 
