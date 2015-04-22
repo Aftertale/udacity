@@ -1,6 +1,9 @@
 import media
 import fresh_tomatoes
 
+#dictionary to store Movie information
+movie_dict = {}
+
 toy_story = media.Movie("Toy Story",
                         "https://www.youtube.com/watch?v=KYz2wyBy3kc")
 
@@ -28,8 +31,16 @@ django_unchained = media.Movie("Django Unchained",
 princess_bride = media.Movie("The Princess Bride",
                              "www.youtube.com/watch?v=njZBYfNpWoE")
 
+imitation_game = media.Movie("The Imitation Game",
+                             "www.youtube.com/[todo:add]")
 
-unsorted_movies = [toy_story, avatar, school_of_rock, pulp_fiction, ratatouille, midnight_in_paris, snakes_on_a_plane, django_unchained]
+a_new_hope = media.Movie("Star Wars","www.youtube.com","1977")
+
+unsorted_movies = []
+for movie in movies:
+    unsorted_movies.append(movie)
+    
+#unsorted_movies = [toy_story, avatar, school_of_rock, pulp_fiction, ratatouille, midnight_in_paris, snakes_on_a_plane, django_unchained, princess_bride, imitation_game, a_new_hope]
 for movie in unsorted_movies:
     print(movie.title)
     info = movie.get_movie_info()
