@@ -36,20 +36,20 @@ imitation_game = media.Movie("The Imitation Game",
 
 a_new_hope = media.Movie("Star Wars","www.youtube.com","1977")
 
-unsorted_movies = []
-for movie in movies:
-    unsorted_movies.append(movie)
+kiss_kiss_bang_bang = media.Movie("Kiss Kiss Bang Bang", "www.youtube.com")
+
+avengers = media.Movie("The Avengers", "www.youtube.com", "2012")
     
-#unsorted_movies = [toy_story, avatar, school_of_rock, pulp_fiction, ratatouille, midnight_in_paris, snakes_on_a_plane, django_unchained, princess_bride, imitation_game, a_new_hope]
+unsorted_movies = [toy_story, avatar, school_of_rock, pulp_fiction, ratatouille, midnight_in_paris, snakes_on_a_plane, django_unchained, princess_bride, imitation_game, a_new_hope, kiss_kiss_bang_bang, avengers]
 for movie in unsorted_movies:
     print(movie.title)
     info = movie.get_movie_info()
     movie.poster_image_url = info.get("Poster")
-    movie.storyline = info.get("Plot").encode("utf-8").strip()
+    movie.storyline = info.get("Plot")
     movie.genre = info.get("Genre")
     movie.cast = info.get("Actors")
     movie.year = info.get("Year")
-    movie.director = info["Director"]
+    movie.director = info.get("Director")
 movies = sorted(unsorted_movies, key=lambda movie: movie.title)
 
 

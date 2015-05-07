@@ -78,6 +78,10 @@ main_page_head = '''
             $(this).next("div").show("fast", showNext);
           });
         });
+        // Enable Tooltips for movie storylines
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        });
     </script>
 </head>
 '''
@@ -121,23 +125,24 @@ main_page_content = '''
 
 # A single movie entry html template
 movie_tile_content = '''
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal tooltip" data-target="#trailer" title="Play Trailer">
     <img src="{poster_image_url}" width="220" height="342">
     <h2>{movie_title}</h2>
     <h3>{movie_year}</h3>
-    <p>{movie_cast}</p>
+    <h4>{movie_director}</h4>
+    <button type="button" class="btn btn-lg btn-danger" data-html="true" data-toggle="popover" title="{movie_title}" data-content="<strong>Starring:  </strong>{movie_cast}<br /><strong>Plot Synopsis:  </strong>{movie_plot}" data-placement="top">Plot Summary</button>
 </div>
 '''
+##movie_tile_front = '''
+##<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
+##    <img src="{poster_image_url}" width="220" height="342">
+##    <h2>{movie_title}</h2>
+##    <h3>{movie_year}</h3>
+##    <p>{movie_cast}</p>
+##</div>
+##'''
 
-movie_tile_front = '''
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <img src="{poster_image_url}" width="220" height="342">
-    <h2>{movie_title}</h2>
-    <h3>{movie_year}</h3>
-    <p>{movie_cast}</p>
-</div>
-'''
-
+# Creates the youtube modal on the movie poster
 def create_movie_tiles_content(movies):
     # The HTML content for this section of the page
     content = ''
