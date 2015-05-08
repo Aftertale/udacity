@@ -52,6 +52,7 @@ for movie in unsorted_movies:
     movie.cast = info.get("Actors")
     movie.year = info.get("Year")
     movie.director = info.get("Director")
+    movie.rating = info.get("Rated")
 movies = sorted(unsorted_movies, key=lambda movie: movie.title)
 
 

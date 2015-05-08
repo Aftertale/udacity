@@ -136,7 +136,7 @@ main_page_content = '''
 movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" id="{movie_title}">
     <img src="{poster_image_url}" class="movie-poster" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <div data-html="true" data-toggle="popover" title="{movie_title}" data-content="{movie_plot}" data-placement="top">
+    <div data-html="true" data-toggle="popover" title="{movie_title}" data-content="<h4>{movie_year}, {movie_rating}</h4><p>{movie_cast}</p><p>{movie_plot}</p>" data-placement="top">
     <h2>{movie_title}</h2>
     <h3>{movie_year}</h3>
     <h4>{movie_director}</h4>
@@ -162,7 +162,8 @@ def create_movie_tiles_content(movies):
             movie_year=movie.year,
             movie_cast=movie.cast,
             movie_director=movie.director,
-            movie_plot=movie.storyline,
+            movie_plot=movie.storyline.replace("\"", "&quot"),
+            movie_rating=movie.rating,
         )
     return content
 
