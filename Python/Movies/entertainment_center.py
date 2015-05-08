@@ -32,15 +32,17 @@ princess_bride = media.Movie("The Princess Bride",
                              "www.youtube.com/watch?v=njZBYfNpWoE")
 
 imitation_game = media.Movie("The Imitation Game",
-                             "www.youtube.com/[todo:add]")
+                             "https://www.youtube.com/watch?v=S5CjKEFb-sM")
 
-a_new_hope = media.Movie("Star Wars","www.youtube.com","1977")
+a_new_hope = media.Movie("Star Wars","https://www.youtube.com/watch?v=1g3_CFmnU7k","1977")
 
-kiss_kiss_bang_bang = media.Movie("Kiss Kiss Bang Bang", "www.youtube.com")
+kiss_kiss_bang_bang = media.Movie("Kiss Kiss Bang Bang", "https://www.youtube.com/watch?v=__PnD1HWXSo")
 
-avengers = media.Movie("The Avengers", "www.youtube.com", "2012")
+avengers = media.Movie("The Avengers", "https://www.youtube.com/watch?v=eOrNdBpGMv8", "2012")
+
+age_of_ultron = media.Movie("Avengers: Age of Ultron", "https://www.youtube.com/watch?v=JAUoeqvedMo")
     
-unsorted_movies = [toy_story, avatar, school_of_rock, pulp_fiction, ratatouille, midnight_in_paris, snakes_on_a_plane, django_unchained, princess_bride, imitation_game, a_new_hope, kiss_kiss_bang_bang, avengers]
+unsorted_movies = [toy_story, avatar, school_of_rock, pulp_fiction, ratatouille, midnight_in_paris, snakes_on_a_plane, django_unchained, princess_bride, imitation_game, a_new_hope, kiss_kiss_bang_bang, avengers, age_of_ultron]
 for movie in unsorted_movies:
     print(movie.title)
     info = movie.get_movie_info()
